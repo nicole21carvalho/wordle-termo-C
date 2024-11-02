@@ -1,0 +1,9 @@
+# ninja log v6
+7	906	7522767078458077	CMakeFiles/Wordle.dir/main.c.obj	bd4f237ab5bd194d
+907	1023	7522767087464259	Wordle.exe	988e0391d4f3bea2
+10	88	7522684184749706	CMakeFiles/Wordle.dir/backupPalavras.c.obj	6ca46daca9bb19ee
+7	943	7522747235373895	CMakeFiles/Wordle.dir/processarTentativa.c.obj	a9a68ffa57f5a443
+13	98	7522770190891695	CMakeFiles/Wordle.dir/backupPalavras.c.obj	318e89e100ad5808
+18	919	7522770190946980	CMakeFiles/Wordle.dir/processarTentativa.c.obj	7e737d15a3a8842b
+8	922	7522770190841651	CMakeFiles/Wordle.dir/main.c.obj	81d755d6cd64115
+922	1018	7522770199983438	Wordle.exe	988e0391d4f3bea2
