@@ -11,39 +11,34 @@ void BackupPalavras(FILE *arquivo) {
 
     arquivo = fopen("../palavras.txt", "a");
     char *backupPalavras[] = {
-        "Festa", "Papel", "Gatos", "Manga", "Casa",
-        "Amigo", "Bolas", "Cheio", "Dente", "Vento",
-        "Rios", "Luz", "Certa", "Saude", "Sorte",
-        "Notas", "Lagoa", "Grande", "Cores", "Pleno",
-        "Reais", "Sol", "Folha", "Cinto", "Vinha",
-        "Livros", "Bicho", "Votos", "Jovem", "Chave",
-        "Agua", "Bater", "Curva", "Doido", "Enfim",
-        "Fardo", "Garfo", "Hotel", "Irmao", "Janta",
-        "Karen", "Ligar", "Mover", "Nobre", "Ossos",
-        "Padre", "Quase", "Roupa", "Sabor", "Tarde",
-        "Urano", "Viver", "Xeque", "Zonal", "Adubo",
-        "Beber", "Chuva", "Dente", "Exato", "Folga",
-        "Abriu", "Brisa", "Cavalo", "Drama", "Escola",
-        "Folclore", "Grato", "Horta", "Ignicao", "Juros",
-        "Koala", "Laranja", "Marcha", "Nodôa", "Obito",
-        "Planta", "Quadro", "Relógio", "Sumo", "Tênis",
-        "Urina", "Viagem", "Xícara", "Zebra", "Amigo",
-        "Bolha", "Carro", "Dúbio", "Ensino", "Flor",
-        "Ativo", "Bomba", "Clara", "Dança", "Ecoar",
-        "Falar", "Gasto", "Herói", "Ídolo", "Junta",
-        "Koans", "Livre", "Mágoa", "Nuvem", "Óvulo",
-        "Prato", "Queda", "Rezar", "Sampa", "Tigre",
-        "Úteis", "Varal", "Xerife", "Zumbi", "Acorda",
-        "Banho", "Crise", "Dados", "Exame", "Fundo",
-        "Glória", "Hábito", "Iguana", "Janeiro", "Kraken",
-        "Lenda", "Mente", "Notas", "Olhar", "Pista",
-        "Quota", "Regras", "Somar", "Tempo", "Urgente",
-        "Vista", "Xarope", "Zé", "Acaso", "Botas",
-        "Custo", "Drama", "Especie", "Fauna", "Goma",
-        "História", "Início", "Jogo", "Lado", "Modo"
+        "FESTA", "PAPEL", "GATOS", "MANGA", "AMIGO",
+        "BOLAS", "CHEIO", "DENTE", "VENTO", "CERTA",
+        "SAÚDE", "SORTE", "NOTAS", "PLENO", "FOLHA",
+        "CINTO", "VINHA", "JOVEM", "ÁGUA", "BATER",
+        "CURVA", "DOIDO", "ENFIM", "FARDO", "GARFO",
+        "HOTEL", "JANTA", "LIGAR", "MOVER", "NOBRE",
+        "OSSOS", "PADRE", "QUASE", "ROUPA", "SABOR",
+        "TARDE", "URANO", "VIVER", "XEQUE", "ZONAL",
+        "ADUBO", "BEBER", "CHUVA", "DENTE", "EXATO",
+        "FOLGA", "ABRIU", "BRISA", "GRATO", "HORTA",
+        "JUROS", "MARCHA", "PLANTA", "QUEDA", "REZAR",
+        "SAMPA", "TIGRE", "VARAL", "ZUMBI",
+        "ALOHA", "BAIXO", "CALMA", "DUCHA", "ENTAO",
+        "FERVO", "GANHO", "HUMOR", "IDEIA", "JOVEM",
+        "LETRA", "MANIA", "OBTER", "POSAR", "RITMO",
+        "SALVO", "TURMA", "URINA", "VIRAR", "ZEALO",
+        "BRASA", "TREVO", "VIOLA", "QUERO", "RENDA",
+        "DITAR", "LIVRO", "ÓRGÃO", "CAFÉ", "VAZIO",
+        "PECAR", "BOINA", "NAVIO", "CHEFE", "SIGLA",
+        "RISCO", "MUDAR", "PUNIR", "TIROS", "CHÃOS",
+        "SÉRIE", "CERTO", "DUROS", "LOIRO", "PODER",
+        "BOLSO", "FALSA", "MOTEL", "HOTEL", "JUBAS"
+
     };
 
     for (int i = 0; i < sizeof(backupPalavras) / sizeof(char *); i++) {
         fprintf(arquivo, "%s \n", backupPalavras[i]);
     }
+
+    fclose(arquivo);
 };

@@ -12,11 +12,11 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
     char pista[6] = {'_','_','_','_','_','\0'};
     bool pistaTentativa[5] = {false, false, false, false, false};
 
-    if(strlen(tentativa) != 5) {
+    if(strlen(tentativa) != 5) { // Verifica se a palavra tem 5 letras
         printf("Digite uma palavra com 5 letras!\n");
     } else {
-        (*N)++;
-        if (strcmp(tentativa, resposta) == 0) {
+        (*N)++; //Incrementa as tentativas
+        if (strcmp(tentativa, resposta) == 0) { // Verifica se são iguais
             return true;
         }
         // Verifica se a letra esta na posicao correta

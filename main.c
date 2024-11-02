@@ -45,12 +45,12 @@ bool continuarJogo() {
         FILE *arqPalavras = fopen("../palavras.txt", "r"); // Abrindo o arquivo de palavras
 
         if (arqPalavras == NULL) { // Se a palavras não forem carregadas
-            printf("Erro abrindo lista de palavras\n");
+            printf("Erro abrindo lista de palavras\nO ARQUIVO SERÁ GERADO \n \n \n \n");
             fclose(arqPalavras);
             BackupPalavras(arqPalavras); // Função que cria o arquivo necessário
         }
 
-
+        arqPalavras = fopen("../palavras.txt", "r");
 
         // Loops para ler o arquivo e colocar as palavras em uma lista
         while(fscanf(arqPalavras, "%s", palavra) != EOF) {
@@ -59,11 +59,11 @@ bool continuarJogo() {
             palavra = malloc(strlen(palavra) * sizeof(char));
         }
 
-
+    fclose(arqPalavras);
         // Selecionando uma palavra aleatória da lista
         srand(time(NULL));
 
-        bool estadoJogo = true;
+
 
 
         while(true) {
@@ -92,14 +92,18 @@ bool continuarJogo() {
 
             } else {
                 printf("-----------------------------------------------------\n");
-                printf("               FIM DE JOGO! SEM MAIS TENTATIVAS.       \n");
+                printf("               FIM DE JOGO! SEM MAIS TENTATIVAS.       \n ");
                 printf("-----------------------------------------------------\n");
+                printf("-----------------------RESPOSTA: %s------------------------------\n", resposta);
             }
 
             printf("\n\n\n");
 
 
             if(!continuarJogo()) {
+                free(tentativa);
+                free(listaPalavras);
+                free(palavra);
                 break;
 
             }
@@ -108,6 +112,12 @@ bool continuarJogo() {
 
 
         }
+
+
+
+
+
+
     return 0;
 
 }
