@@ -1,2 +1,2 @@
 # wordle/termo-C
- Trabalho de Algoritmos e Programação Estruturad
+ Trabalho de Algoritmos e Programação Estrutura
