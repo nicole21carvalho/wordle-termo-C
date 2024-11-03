@@ -12,7 +12,7 @@
 #include "processarTentativa.h"
 #include "cores.h"
 
-const int MAX_PALAVRAS = 135;
+const int MAX_PALAVRAS = 301;
 
 
 
@@ -20,6 +20,7 @@ const int MAX_PALAVRAS = 135;
 
 bool continuarJogo() {
     char c;
+
     fflush(stdin);
     printf("\n Pressione S para continuar... \n");
     scanf(" %c", &c);
@@ -34,6 +35,13 @@ bool continuarJogo() {
 }
 
 
+typedef struct jogador {
+    char name[50];
+    int pontos;
+} jogador_t;
+
+
+
 
     int main() {
         SetConsoleCP(CP_UTF8);
@@ -43,8 +51,11 @@ bool continuarJogo() {
         char **listaPalavras = calloc(MAX_PALAVRAS, sizeof(char*));
         char *palavra = malloc(6 * sizeof(char));
         int contadorPalavra = 0;
+        jogador_t novo_jogador;
+        jogador_t *jogador = &novo_jogador;
+        jogador->pontos = 0;
 
-
+    int l = 0;
 
 
 
@@ -66,13 +77,29 @@ bool continuarJogo() {
             listaPalavras[contadorPalavra] = palavra;
             contadorPalavra++;
             palavra = malloc(strlen(palavra) * sizeof(char));
+            printf("\n CARREGANDO %d%%", contadorPalavra * 100 / MAX_PALAVRAS);
+            Sleep(10);
+            fflush(stdout);
+            system("cls");
         }
+
+
+
+
+
+
+
 
         fclose(arqPalavras);
         // Selecionando uma palavra aleatória da lista
         srand(time(NULL));
 
-    
+
+
+
+
+
+
     colorir(COR_ROXO);
     printf("   /\\    \\                  /\\    \\                  /\\    \\                  /\\    \\                 /::\\    \\        \n");
     printf("  /::\\    \\                /::\\    \\                /::\\    \\                /::\\____\\               /::::\\    \\       \n");
@@ -95,12 +122,12 @@ bool continuarJogo() {
     printf("                             \\::/    /                \\:|   |                  \\::/    /                 ~~              \n");
     printf("                              \\/____/                  \\|___|                   \\/____/                                 \n");
     colorir(COR_BRANCO);
-
+    printf("\n\n\n\n\n");
 
 
         while(true) {
-
-            char *resposta = listaPalavras[rand() % contadorPalavra];
+            printf("\n\n\n\n\n");
+            char *resposta = listaPalavras[0];//rand() % contadorPalavra];
             int *N;
             int NumeroTentativas = 0;
             N = &NumeroTentativas;
@@ -127,6 +154,12 @@ bool continuarJogo() {
                 printf("               A PALAVRA ESTÁ CORRETA!                \n");
                 printf("-----------------------------------------------------\n");
                 colorir(COR_BRANCO);
+
+                novo_jogador.pontos += (6 - NumeroTentativas);
+                colorir(4);
+                printf("\nPontução da rodada: %d\n", 6 - NumeroTentativas);
+                printf("Pontuação total do jogador: %d\n", novo_jogador.pontos);
+                colorir(7);
 
             } else {
                 colorir(COR_VERMELHO);
