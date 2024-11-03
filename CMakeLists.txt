@@ -7,4 +7,6 @@ add_executable(Wordle main.c
         backupPalavras.c
         backupPalavras.h
         processarTentativa.c
-        processarTentativa.h)
+        processarTentativa.h
+        cores.c
+        cores.h)

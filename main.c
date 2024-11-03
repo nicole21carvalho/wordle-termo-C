@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <conio.h>
 #include <time.h>
 #include <stdbool.h>
 #include <locale.h>
@@ -10,9 +10,12 @@
 
 #include "backupPalavras.h"
 #include "processarTentativa.h"
+#include "cores.h"
+
+const int MAX_PALAVRAS = 135;
 
 
-const int MAX_PALAVRAS = 150;
+
 
 
 bool continuarJogo() {
@@ -22,6 +25,7 @@ bool continuarJogo() {
     scanf(" %c", &c);
 
     if (c == 's' || c == 'S') {
+        system("cls");
         return true;
 
     } else {
@@ -42,6 +46,8 @@ bool continuarJogo() {
 
 
 
+
+
         FILE *arqPalavras = fopen("../palavras.txt", "r"); // Abrindo o arquivo de palavras
 
         if (arqPalavras == NULL) { // Se a palavras não forem carregadas
@@ -59,7 +65,7 @@ bool continuarJogo() {
             palavra = malloc(strlen(palavra) * sizeof(char));
         }
 
-    fclose(arqPalavras);
+        fclose(arqPalavras);
         // Selecionando uma palavra aleatória da lista
         srand(time(NULL));
 
@@ -67,6 +73,7 @@ bool continuarJogo() {
 
 
         while(true) {
+
             char *resposta = listaPalavras[rand() % contadorPalavra];
             int *N;
             int NumeroTentativas = 0;
@@ -76,6 +83,8 @@ bool continuarJogo() {
 
             while(NumeroTentativas < 6 && !acertou_palavras) {
                 fflush(stdin);
+
+                printf("\n\n");
                 printf("Digite uma palavra com 5 letras: \n");
                 scanf("%s", tentativa);
 
@@ -86,15 +95,20 @@ bool continuarJogo() {
             }
 
             if (acertou_palavras) {
+                colorir(COR_VERDE);
                 printf("-----------------------------------------------------\n");
                 printf("               A PALAVRA ESTÁ CORRETA!                \n");
                 printf("-----------------------------------------------------\n");
+                colorir(COR_BRANCO);
 
             } else {
+                colorir(COR_VERMELHO);
                 printf("-----------------------------------------------------\n");
                 printf("               FIM DE JOGO! SEM MAIS TENTATIVAS.       \n ");
                 printf("-----------------------------------------------------\n");
-                printf("-----------------------RESPOSTA: %s------------------------------\n", resposta);
+                colorir(COR_VERDE);
+                printf("-----------------------RESPOSTA: %s------------\n", resposta);
+                colorir(COR_BRANCO);
             }
 
             printf("\n\n\n");

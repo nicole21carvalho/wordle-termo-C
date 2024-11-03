@@ -18,4 +18,5 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N);
 
 
 
+
 #endif //PROCESSARTENTATIVA_H
