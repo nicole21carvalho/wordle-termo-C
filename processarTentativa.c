@@ -11,8 +11,6 @@
 
 
 
-
-
 bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
 
     char pista[6] = {'_','_','_','_','_','\0'};
@@ -48,7 +46,6 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
             }
 
         }
-
         printf("\n-----------------------------------------------------\n");
         for (int i = 0; i < 5; i++) {
             if (pista[i] == 'A') {
