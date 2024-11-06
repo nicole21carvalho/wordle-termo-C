@@ -91,7 +91,7 @@ typedef struct jogador {
 
 
         fclose(arqPalavras);
-        // Selecionando uma palavra aleatória da lista
+
         srand(time(NULL));
 
 
@@ -127,7 +127,8 @@ typedef struct jogador {
 
         while(true) {
             printf("\n\n\n\n\n");
-            char *resposta = listaPalavras[0];//rand() % contadorPalavra];
+            // Selecionando uma palavra aleatória da lista
+            char *resposta = listaPalavras[rand() % contadorPalavra];
             int *N;
             int NumeroTentativas = 0;
             N = &NumeroTentativas;
