@@ -54,7 +54,7 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
                 colorir(4);
                 printf("%c", tentativa[i]);
                 colorir(7);
-            } else if (pista[i] == 'Q') {
+            } else {
                 colorir(6);
                 printf("%c", tentativa[i]);
                 colorir(7);
