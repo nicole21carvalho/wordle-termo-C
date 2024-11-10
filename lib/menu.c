@@ -36,22 +36,7 @@ void displayMenu(jogador_t *jogador, bool *estado) {
         printf("  |_| |___|_|_ \\_| |_|\\___/ \n");
         colorir(COR_BRANCO);
 
-        printf("\n\n\n");
-
-
-
-        printf(" 1. FASE UM\n");
-
-        printf(" 2. FASE DOIS\n");
-
-        printf(" 3. FASE TRÊS\n");
-
-        printf(" 4. FASE QUATRO\n");
-
-        printf(" 5. FASE CINCO\n");
-
-        printf(" 6. MODO INFINITO\n");
-
+        break;
 
         case '2':
         /*    FILE *stats = fopen("stats.txt", "r");
@@ -62,7 +47,7 @@ void displayMenu(jogador_t *jogador, bool *estado) {
         case '3':
         system("cls");
         fflush(stdout);
-        if(!continuarJogo()) {
+        if(!continuarJogo(estado)) {
             Sleep(1000);
             *estado = false;
 

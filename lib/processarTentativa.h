@@ -17,7 +17,7 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N);
 
 char getTecladoJogador();
 
-bool continuarJogo();
+bool continuarJogo(bool *estado);
 
 
 #endif //PROCESSARTENTATIVA_H

@@ -84,7 +84,7 @@ char getTecladoJogador() {
 }
 
 
-bool continuarJogo() {
+bool continuarJogo(bool *estado) {
     char c;
 
     fflush(stdin);
