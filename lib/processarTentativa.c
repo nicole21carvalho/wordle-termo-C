@@ -14,6 +14,9 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
     char pista[6] = {'_','_','_','_','_','\0'};
     bool pistaTentativa[5] = {false, false, false, false, false};
 
+
+
+
     if(strlen(tentativa) != 5) { // Verifica se a palavra tem 5 letras
         printf("ERRO! Digite uma palavra com 5 letras!\n");
     } else {
@@ -45,6 +48,7 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
 
         }
         printf("\n-----------------------------------------------------\n");
+
         for (int i = 0; i < 5; i++) {
             if (pista[i] == 'A') {
                 colorir(2);
@@ -73,3 +77,30 @@ bool processarTentativa(const char *tentativa, const  char *resposta, int *N) {
 
     }
 
+
+
+char getTecladoJogador() {
+    return _getch();
+}
+
+
+bool continuarJogo() {
+    char c;
+
+    fflush(stdin);
+    colorir(COR_VERDE);
+    printf("\nS PARA CONTINUAR\n");
+    colorir(COR_VERMELHO);
+    printf("\nN PARA SAIR\n");
+    colorir(COR_BRANCO);
+    c = getTecladoJogador();
+
+
+    if (c == 's' || c == 'S') {
+        system("cls");
+        return true;
+
+    } else {
+        return false;
+    }
+}

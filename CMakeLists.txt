@@ -4,9 +4,14 @@ project(Wordle C)
 set(CMAKE_C_STANDARD 23)
 
 add_executable(Wordle main.c
-        backupPalavras.c
-        backupPalavras.h
-        processarTentativa.c
-        processarTentativa.h
-        cores.c
-        cores.h)
+        lib/backupPalavras.c
+        lib/backupPalavras.h
+        lib/processarTentativa.c
+        lib/processarTentativa.h
+        lib/cores.c
+        lib/cores.h
+        lib/backupPalavras.c
+        lib/menu.c
+        lib/menu.h
+        lib/lib.h
+)

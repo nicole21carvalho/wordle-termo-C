@@ -1,44 +1,8 @@
-#include <stdatomic.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-#include <time.h>
-#include <stdbool.h>
-#include <locale.h>
-#include <windows.h>
-
-#include "backupPalavras.h"
-#include "processarTentativa.h"
-#include "cores.h"
+#include "lib/lib.h"
 
 const int MAX_PALAVRAS = 301;
 
 
-
-
-
-bool continuarJogo() {
-    char c;
-
-    fflush(stdin);
-    printf("\n Pressione S para continuar... \n");
-    scanf(" %c", &c);
-
-    if (c == 's' || c == 'S') {
-        system("cls");
-        return true;
-
-    } else {
-        return false;
-    }
-}
-
-
-typedef struct jogador {
-    char name[50];
-    int pontos;
-} jogador_t;
 
 
 
@@ -48,84 +12,51 @@ typedef struct jogador {
         SetConsoleOutputCP(CP_UTF8);
         setlocale(LC_ALL, ".UTF8");
 
-        char **listaPalavras = calloc(MAX_PALAVRAS, sizeof(char*));
-        char *palavra = malloc(6 * sizeof(char));
-        int contadorPalavra = 0;
-        jogador_t novo_jogador;
-        jogador_t *jogador = &novo_jogador;
+        bool estadoJogo = true;
+        bool *state = &estadoJogo;
+        jogador_t *jogador = malloc(sizeof(jogador_t));
         jogador->pontos = 0;
 
-    int l = 0;
+        displayMenu(jogador, state);
+
+
+        while(estadoJogo) {
+
+
+            char **listaPalavras = calloc(MAX_PALAVRAS, sizeof(char*));
+            char *palavra = malloc(6 * sizeof(char));
+            int contadorPalavra = 0;
 
 
 
-        FILE *arqPalavras = fopen("../palavras.txt", "r"); // Abrindo o arquivo de palavras
+            FILE *arqPalavras = fopen("../palavras.txt", "r"); // Abrindo o arquivo de palavras
 
-        if (arqPalavras == NULL) { // Se a palavras não forem carregadas
-            printf("Erro abrindo lista de palavras\nO ARQUIVO SERÁ GERADO \n \n \n \n");
-            fclose(arqPalavras);
-            BackupPalavras(arqPalavras); // Função que cria o arquivo necessário
-        }
+            if (arqPalavras == NULL) { // Se a palavras não forem carregadas
+                printf("Erro abrindo lista de palavras\nO ARQUIVO SERÁ GERADO \n \n \n \n");
+                fclose(arqPalavras);
+                BackupPalavras(arqPalavras); // Função que cria o arquivo necessário
+            }
 
-        arqPalavras = fopen("../palavras.txt", "r");
+            arqPalavras = fopen("../palavras.txt", "r");
+            // Loops para ler o arquivo e colocar as palavras em uma lista
+            while(fscanf(arqPalavras, "%s", palavra) != EOF) {
+                listaPalavras[contadorPalavra] = palavra;
+                contadorPalavra++;
+                palavra = malloc(6 * sizeof(char));
+                printf("\n CARREGANDO %d%%", contadorPalavra * 100 / MAX_PALAVRAS);
+                Sleep(10);
+                fflush(stdout);
 
-
-
-
-        // Loops para ler o arquivo e colocar as palavras em uma lista
-        while(fscanf(arqPalavras, "%s", palavra) != EOF) {
-            listaPalavras[contadorPalavra] = palavra;
-            contadorPalavra++;
-            palavra = malloc(strlen(palavra) * sizeof(char));
-            printf("\n CARREGANDO %d%%", contadorPalavra * 100 / MAX_PALAVRAS);
-            Sleep(10);
-            fflush(stdout);
+            }
             system("cls");
-        }
 
 
 
+            fclose(arqPalavras);
+
+            srand(time(NULL));
 
 
-
-
-
-        fclose(arqPalavras);
-
-        srand(time(NULL));
-
-
-
-
-
-
-
-    colorir(COR_ROXO);
-    printf("   /\\    \\                  /\\    \\                  /\\    \\                  /\\    \\                 /::\\    \\        \n");
-    printf("  /::\\    \\                /::\\    \\                /::\\    \\                /::\\____\\               /::::\\    \\       \n");
-    printf("  \\:::\\    \\              /::::\\    \\              /::::\\    \\              /::::|   |              /::::::\\    \\      \n");
-    printf("   \\:::\\    \\            /::::::\\    \\            /::::::\\    \\            /:::::|   |             /::::::::\\    \\     \n");
-    printf("    \\:::\\    \\          /:::/\\:::\\    \\          /:::/\\:::\\    \\          /::::::|   |            /:::/~~\\:::\\    \\    \n");
-    printf("     \\:::\\    \\        /:::/__\\:::\\    \\        /:::/__\\:::\\    \\        /:::/|::|   |           /:::/    \\:::\\    \\   \n");
-    printf("     /::::\\    \\      /::::\\   \\:::\\    \\      /::::\\   \\:::\\    \\      /:::/ |::|   |          /:::/    / \\:::\\    \\  \n");
-    printf("    /::::::\\    \\    /::::::\\   \\:::\\    \\    /::::::\\   \\:::\\    \\    /:::/  |::|___|______   /:::/____/   \\:::\\____\\ \n");
-    printf("   /:::/\\:::\\    \\  /:::/\\:::\\   \\:::\\    \\  /:::/\\:::\\   \\:::\\____\\  /:::/   |::::::::\\    \\ |:::|    |     |:::|    |\n");
-    printf("  /:::/  \\:::\\____\\/:::/__\\:::\\   \\:::\\____\\/:::/  \\:::\\   \\:::|    |/:::/    |:::::::::\\____\\|:::|____|     |:::|    |\n");
-    printf(" /:::/    \\::/    /\\:::\\   \\:::\\   \\::/    /\\::/   |::::\\  /:::|____|\\::/    / ~~~~~/:::/    / \\:::\\    \\   /:::/    / \n");
-    printf("/:::/    / \\/____/  \\:::\\   \\:::\\   \\/____/  \\/____|:::::\\/:::/    /  \\/____/      /:::/    /   \\:::\\    \\/:::/    /  \n");
-    printf("/:::/    /            \\:::\\   \\:::\\    \\            |:::::::::/    /               /:::/    /     \\:::\\    /:::/    /   \n");
-    printf("/:::/    /              \\:::\\   \\:::\\____\\           |::|\\::::/    /               /:::/    /       \\:::\\__/:::/    /    \n");
-    printf("\\::/    /                \\:::\\   \\::/    /           |::| \\::/____/               /:::/    /         \\::::::::/    /     \n");
-    printf(" \\/____/                  \\:::\\   \\/____/            |::|  ~|                    /:::/    /           \\::::::/    /      \n");
-    printf("                           \\:::\\    \\                |::|   |                   /:::/    /             \\::::/    /       \n");
-    printf("                            \\:::\\____\\               \\::|   |                  /:::/    /               \\::/____/        \n");
-    printf("                             \\::/    /                \\:|   |                  \\::/    /                 ~~              \n");
-    printf("                              \\/____/                  \\|___|                   \\/____/                                 \n");
-    colorir(COR_BRANCO);
-    printf("\n\n\n\n\n");
-
-
-        while(true) {
             printf("\n\n\n\n\n");
             // Selecionando uma palavra aleatória da lista
             char *resposta = listaPalavras[rand() % contadorPalavra];
@@ -137,7 +68,6 @@ typedef struct jogador {
 
             while(NumeroTentativas < 6 && !acertou_palavras) {
                 fflush(stdin);
-
                 printf("\n\n");
                 printf("Digite uma palavra com 5 letras: \n");
                 scanf("%s", tentativa);
@@ -156,10 +86,10 @@ typedef struct jogador {
                 printf("-----------------------------------------------------\n");
                 colorir(COR_BRANCO);
 
-                novo_jogador.pontos += (6 - NumeroTentativas);
+                jogador->pontos += (6 - NumeroTentativas);
                 colorir(4);
                 printf("\nPontução da rodada: %d\n", 6 - NumeroTentativas);
-                printf("Pontuação total do jogador: %d\n", novo_jogador.pontos);
+                printf("Pontuação total do jogador: %d\n", jogador->pontos);
                 colorir(7);
 
             } else {

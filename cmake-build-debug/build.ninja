@@ -55,23 +55,29 @@ build CMakeFiles/Wordle.dir/main.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/U
   OBJECT_DIR = CMakeFiles\Wordle.dir
   OBJECT_FILE_DIR = CMakeFiles\Wordle.dir
 
-build CMakeFiles/Wordle.dir/backupPalavras.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/backupPalavras.c || cmake_object_order_depends_target_Wordle
-  DEP_FILE = CMakeFiles\Wordle.dir\backupPalavras.c.obj.d
+build CMakeFiles/Wordle.dir/lib/backupPalavras.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/lib/backupPalavras.c || cmake_object_order_depends_target_Wordle
+  DEP_FILE = CMakeFiles\Wordle.dir\lib\backupPalavras.c.obj.d
   FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Wordle.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir
+  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir\lib
 
-build CMakeFiles/Wordle.dir/processarTentativa.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/processarTentativa.c || cmake_object_order_depends_target_Wordle
-  DEP_FILE = CMakeFiles\Wordle.dir\processarTentativa.c.obj.d
+build CMakeFiles/Wordle.dir/lib/processarTentativa.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/lib/processarTentativa.c || cmake_object_order_depends_target_Wordle
+  DEP_FILE = CMakeFiles\Wordle.dir\lib\processarTentativa.c.obj.d
   FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Wordle.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir
+  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir\lib
 
-build CMakeFiles/Wordle.dir/cores.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/cores.c || cmake_object_order_depends_target_Wordle
-  DEP_FILE = CMakeFiles\Wordle.dir\cores.c.obj.d
+build CMakeFiles/Wordle.dir/lib/cores.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/lib/cores.c || cmake_object_order_depends_target_Wordle
+  DEP_FILE = CMakeFiles\Wordle.dir\lib\cores.c.obj.d
   FLAGS = -g -std=gnu2x -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Wordle.dir
-  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir
+  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir\lib
+
+build CMakeFiles/Wordle.dir/lib/menu.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/Users/biosh/OneDrive/Documents/GitHub/C5/Wordle/wordle-termo-C/lib/menu.c || cmake_object_order_depends_target_Wordle
+  DEP_FILE = CMakeFiles\Wordle.dir\lib\menu.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Wordle.dir
+  OBJECT_FILE_DIR = CMakeFiles\Wordle.dir\lib
 
 
 # =============================================================================
@@ -81,7 +87,7 @@ build CMakeFiles/Wordle.dir/cores.c.obj: C_COMPILER__Wordle_unscanned_Debug C$:/
 #############################################
 # Link the executable Wordle.exe
 
-build Wordle.exe: C_EXECUTABLE_LINKER__Wordle_Debug CMakeFiles/Wordle.dir/main.c.obj CMakeFiles/Wordle.dir/backupPalavras.c.obj CMakeFiles/Wordle.dir/processarTentativa.c.obj CMakeFiles/Wordle.dir/cores.c.obj
+build Wordle.exe: C_EXECUTABLE_LINKER__Wordle_Debug CMakeFiles/Wordle.dir/main.c.obj CMakeFiles/Wordle.dir/lib/backupPalavras.c.obj CMakeFiles/Wordle.dir/lib/processarTentativa.c.obj CMakeFiles/Wordle.dir/lib/cores.c.obj CMakeFiles/Wordle.dir/lib/menu.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Wordle.dir
