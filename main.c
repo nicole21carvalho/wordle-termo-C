@@ -79,7 +79,8 @@ const int MAX_PALAVRAS = 301;
                 fflush(stdin);
                 printf("\n\n");
                 printf("Digite uma palavra com 5 letras: \n");
-                scanf("%s", tentativa);
+                fgets(tentativa, 6, stdin);
+                tentativa[strcspn(tentativa, "\n")] = 0;
 
                 acertou_palavras = processarTentativa(tentativa, resposta, N);
 
