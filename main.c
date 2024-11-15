@@ -87,8 +87,11 @@ const int MAX_PALAVRAS = 301; // Definição de uma constante para o número má
             while(NumeroTentativas < 6 && !acertou_palavras) {
                 fflush(stdin); // Limpa o buffer de entrada
                 printf("\n\n");
-                printf("Digite uma palavra com 5 letras: \n"); 
-                scanf("%s", tentativa); // Lê a tentativa do jogador
+
+                printf("Digite uma palavra com 5 letras: \n");
+                fgets(tentativa, 6, stdin);
+                tentativa[strcspn(tentativa, "\n")] = 0;
+
 
                 acertou_palavras = processarTentativa(tentativa, resposta, N); // Processa a tentativa e verifica se a palavra está correta
 
